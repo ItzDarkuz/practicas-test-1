@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Almacén Zapatillas - Movimientos</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="img/logo.svg" alt="Logo Almacen Zapatillas" class="logo-img" /> Almacen Zapatillas</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="almacen.html">Almacén</a>
+      <a href="ordenes.html">Órdenes</a>
+      <a href="movimientos.html" class="active">Movimientos</a>
+      <a href="proveedores.html">Proveedores</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="trabajadores.html">Trabajadores</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Movimientos</h1>
+    <p class="subtitulo">Historial completo de todo lo que se movió físicamente en el almacén.</p>
+
+    <section id="filtros">
+      <div class="filtros-grid filtros-grid-4">
+        <input type="text" id="filtro-busqueda-mov" placeholder="Buscar artículo / SKU" />
+        <select id="filtro-tipo-mov">
+          <option value="">Tipo: Todos</option>
+          <option value="RECEPTION">Recepción</option>
+          <option value="INTERNAL_TRANSFER">Transferencia interna</option>
+          <option value="PICKING">Picking</option>
+          <option value="DISPATCH">Despacho</option>
+          <option value="RETURN">Devolución</option>
+        </select>
+        <select id="filtro-estado-mov">
+          <option value="">Estado: Todos</option>
+          <option value="PENDING">Pendiente</option>
+          <option value="APPROVED">Aprobado</option>
+          <option value="REJECTED">Rechazado</option>
+        </select>
+        <input type="date" id="filtro-fecha-mov" />
+      </div>
+    </section>
+
+    <section id="tabla-movimientos-section">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>SKU</th>
+            <th>Artículo</th>
+            <th>Tipo</th>
+            <th>Motivo</th>
+            <th>De → A</th>
+            <th>Cantidad</th>
+            <th>Trabajador</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-movimientos">
+          <tr><td colspan="9">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/movimientos.js"></script>
+
+</body>
+</html>

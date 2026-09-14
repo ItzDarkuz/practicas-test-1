@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Almacén Zapatillas - Trabajadores</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="img/logo.svg" alt="Logo Almacen Zapatillas" class="logo-img" /> Almacen Zapatillas</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="almacen.html">Almacén</a>
+      <a href="ordenes.html">Órdenes</a>
+      <a href="movimientos.html">Movimientos</a>
+      <a href="proveedores.html">Proveedores</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="trabajadores.html" class="active">Trabajadores</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>Trabajadores</h1>
+      <button class="btn-primary" id="btn-nuevo">+ Nuevo trabajador</button>
+    </div>
+
+    <section id="tabla-section">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Registrado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-trabajadores">
+          <tr><td colspan="4">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <dialog id="modal-trabajador">
+    <form id="form-trabajador">
+      <h2 id="modal-titulo">Nuevo trabajador</h2>
+      <input type="hidden" id="form-id" />
+
+      <label>Nombre
+        <input type="text" id="form-name" required />
+      </label>
+
+      <label>Rol
+        <input type="text" id="form-role" placeholder="Ej: Almacenero, Supervisor" />
+      </label>
+
+      <div class="modal-acciones">
+        <button type="button" id="btn-cancelar">Cancelar</button>
+        <button type="submit" class="btn-primary">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/trabajadores.js"></script>
+
+</body>
+</html>

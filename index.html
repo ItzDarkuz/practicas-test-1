@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Almacén Zapatillas - Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Librería cliente de Supabase, cargada desde la CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="img/logo.svg" alt="Logo Almacen Zapatillas" class="logo-img" /> Almacen Zapatillas</div>
+    <nav>
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="almacen.html">Almacén</a>
+      <a href="ordenes.html">Órdenes</a>
+      <a href="movimientos.html">Movimientos</a>
+      <a href="proveedores.html">Proveedores</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="trabajadores.html">Trabajadores</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Dashboard</h1>
+
+    <!-- KPIs principales -->
+    <section id="kpis">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-label">Total de artículos</span>
+          <span class="kpi-value" id="kpi-total-articulos">—</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Stock total</span>
+          <span class="kpi-value" id="kpi-stock-total">—</span>
+        </div>
+        <div class="kpi-card kpi-alert">
+          <span class="kpi-label">Artículos bajo stock mínimo</span>
+          <span class="kpi-value" id="kpi-bajo-minimo">—</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Valor total de inventario</span>
+          <span class="kpi-value" id="kpi-valor-total">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Movimientos recientes -->
+    <section id="movimientos-recientes">
+      <h2>Movimientos recientes</h2>
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Artículo</th>
+            <th>SKU</th>
+            <th>Tipo</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-movimientos-recientes">
+          <tr><td colspan="6">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Artículos bajo el mínimo (detalle) -->
+    <section id="alerta-stock">
+      <h2>⚠️ Artículos que necesitan reposición</h2>
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Artículo</th>
+            <th>Stock actual</th>
+            <th>Stock mínimo</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-bajo-minimo">
+          <tr><td colspan="4">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Primero el cliente de conexión, después el script de esta página -->
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+</html>

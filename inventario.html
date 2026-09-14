@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Almacén Zapatillas - Inventario</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="img/logo.svg" alt="Logo Almacen Zapatillas" class="logo-img" /> Almacen Zapatillas</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="inventario.html" class="active">Inventario</a>
+      <a href="almacen.html">Almacén</a>
+      <a href="ordenes.html">Órdenes</a>
+      <a href="movimientos.html">Movimientos</a>
+      <a href="proveedores.html">Proveedores</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="trabajadores.html">Trabajadores</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>Inventario</h1>
+      <button class="btn-primary" id="btn-nuevo-articulo">+ Nuevo artículo</button>
+    </div>
+
+    <!-- Filtros -->
+    <section id="filtros">
+      <div class="filtros-grid">
+        <input
+          type="text"
+          id="filtro-busqueda"
+          placeholder="Buscar artículo / SKU"
+        />
+        <select id="filtro-categoria">
+          <option value="">Categoría: Todas</option>
+        </select>
+        <select id="filtro-estado-stock">
+          <option value="">Stock: Todos</option>
+          <option value="bajo">Bajo mínimo</option>
+          <option value="normal">Normal</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Tabla principal -->
+    <section id="tabla-inventario-section">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Artículo</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+            <th>Talla</th>
+            <th>Stock</th>
+            <th>Costo</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-inventario">
+          <tr><td colspan="10">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Modal de crear/editar artículo -->
+  <dialog id="modal-articulo">
+    <form id="form-articulo">
+      <h2 id="modal-titulo">Editar artículo</h2>
+      <input type="hidden" id="form-id" />
+
+      <label>SKU
+        <input type="text" id="form-sku" required />
+      </label>
+
+      <label>Nombre
+        <input type="text" id="form-name" required />
+      </label>
+
+      <label>Categoría (marca + línea)
+        <select id="form-category" required></select>
+      </label>
+
+      <label>Talla
+        <input type="number" id="form-size" />
+      </label>
+
+      <label>Precio (S/)
+        <input type="number" step="0.01" id="form-price" />
+      </label>
+
+      <label>Costo (S/)
+        <input type="number" step="0.01" id="form-cost" />
+      </label>
+
+      <label>Stock mínimo
+        <input type="number" id="form-min-stock" />
+      </label>
+
+      <label>Stock máximo
+        <input type="number" id="form-max-stock" />
+      </label>
+
+      <div class="modal-acciones">
+        <button type="button" id="btn-cancelar">Cancelar</button>
+        <button type="submit" class="btn-primary">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/inventario.js"></script>
+
+</body>
+</html>

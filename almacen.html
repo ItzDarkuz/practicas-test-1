@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Almacén Zapatillas - Mapa de Almacén</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="img/logo.svg" alt="Logo Almacen Zapatillas" class="logo-img" /> Almacen Zapatillas</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="almacen.html" class="active">Almacén</a>
+      <a href="ordenes.html">Órdenes</a>
+      <a href="movimientos.html">Movimientos</a>
+      <a href="proveedores.html">Proveedores</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="trabajadores.html">Trabajadores</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>Mapa de Almacén</h1>
+      <select id="selector-almacen">
+        <option value="">Selecciona un almacén...</option>
+      </select>
+    </div>
+
+    <section id="leyenda">
+      <span class="leyenda-item"><span class="caja-muestra caja-ocupada"></span> Ocupada</span>
+      <span class="leyenda-item"><span class="caja-muestra caja-libre"></span> Libre</span>
+    </section>
+
+    <div id="contenedor-racks">
+      <p class="mensaje-vacio">Selecciona un almacén para ver su mapa de racks y posiciones.</p>
+    </div>
+  </main>
+
+  <!-- Panel de detalle al hacer click en una posición ocupada -->
+  <dialog id="modal-posicion">
+    <div class="detalle-posicion">
+      <h2 id="detalle-posicion-titulo">Posición</h2>
+      <div id="detalle-posicion-contenido"></div>
+      <div class="modal-acciones">
+        <button type="button" id="btn-cerrar-detalle">Cerrar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/almacen.js"></script>
+
+</body>
+</html>
